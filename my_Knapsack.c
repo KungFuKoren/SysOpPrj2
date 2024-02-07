@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "my_math.h"
+#include "my_mat.h"
 
 int my_Knapsack(){
     int mat[10][10];

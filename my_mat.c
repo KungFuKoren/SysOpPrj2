@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 #include <stdlib.h>
 #include "my_mat.h"
 
@@ -21,7 +22,7 @@ void matInit(int matrix[10][10]){
 
 void allPaths(int matrix[10][10]){
 
-    for(int k = 0; k < 10 k++){
+    for(int k = 0; k < 10 ; k++){
         for(int i = 0 ; i < 10 ; i++){
             for (int j = i; i < 10; i++)
             {
@@ -45,7 +46,7 @@ void isPath(int matrix[10][10]){
     if(matrix[src][dest] == INT_MAX){
          printf("%s" , "false\n");
     }
-        printf("%s" , "true\n")
+         printf("%s" , "true\n");
 }
 
 int pathLeng(int matrix[10][10]){
