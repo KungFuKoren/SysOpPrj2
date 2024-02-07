@@ -1,11 +1,11 @@
 #ifndef __my_mat_h__
 #define __my_mat_h__
 
-#define MAT_SIZE 10
+#define MAT_SIZE 3
 
-void matInit(int matrix[10][10]);
-// void allPaths(int matrix[10][10]);
-// void isPath(int matrix[10][10]);
-// int pathLeng(int matrix[10][10]);
+void matInit(int matrix[MAT_SIZE][MAT_SIZE]);
+// void allPaths(int matrix[MAT_SIZE][MAT_SIZE]);
+// void isPath(int matrix[MAT_SIZE][MAT_SIZE]);
+// int pathLeng(int matrix[MAT_SIZE][MAT_SIZE]);
 
 #endif
