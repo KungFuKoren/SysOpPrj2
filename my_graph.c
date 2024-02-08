@@ -32,14 +32,6 @@ int main()
             printf("Invalid Input!\n");
             break;
         }
-        //     for (int i = 0; i < MAT_SIZE; i++)
-        //     {
-        //         for (int j = 0; j < MAT_SIZE; j++)
-        //         {
-        //             printf("%d ", mat[i][j]);
-        //         }
-        //         printf("\n");
-        //     }
     }
 
     return 0;
