@@ -3,44 +3,43 @@
 
 int main()
 {
-    int RUN_PROG = 1;
-
     int mat[MAT_SIZE][MAT_SIZE];
 
-    int all_path_mat;
+    int all_path_mat[MAT_SIZE][MAT_SIZE];
 
-    while (RUN_PROG)
+    char chosen_option = 1;
+
+    while (chosen_option != 'D')
     {
-        char chosen_option;
-        printf("What action do you want to perform:\nA- Initialize a matrix\nB- Check if exists a path between two nodes\nC- Length of shortest path between two nodes\nD / EOF- Exit program\n");
-        printf("Your choice: ");
-        scanf("%c", &chosen_option);
+        scanf(" %c", &chosen_option);
 
         switch (chosen_option)
         {
         case 'A':
             matInit(mat);
-            all_path_mat = allPaths(mat);
+            allPaths(mat, all_path_mat);
             break;
         case 'B':
-
+            isPath(all_path_mat);
+            break;
+        case 'C':
+            pathLeng(all_path_mat);
+            break;
         case 'D':
-            RUN_PROG = 0;
             break;
 
         default:
             printf("Invalid Input!\n");
             break;
         }
-        // printf("EXIT SWITCH\n");
-        // for (int i = 0; i < MAT_SIZE; i++)
-        // {
-        //     for (int j = 0; j < MAT_SIZE; j++)
+        //     for (int i = 0; i < MAT_SIZE; i++)
         //     {
-        //         printf("%d ", mat[i][j]);
+        //         for (int j = 0; j < MAT_SIZE; j++)
+        //         {
+        //             printf("%d ", mat[i][j]);
+        //         }
+        //         printf("\n");
         //     }
-        //     printf("\n");
-        // }
     }
 
     return 0;

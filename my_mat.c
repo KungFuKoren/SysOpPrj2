@@ -4,30 +4,22 @@
 
 void matInit(int matrix[MAT_SIZE][MAT_SIZE])
 {
-    printf("IN matInit\n");
-    for (int i = 0; i < MAT_SIZE; i++)
-    {
-        for (int j = i; j < MAT_SIZE; j++)
-        {
-            if (j == i)
-            {
-                matrix[j][i] = 0;
-                continue;
-            }
-            scanf("%d", &matrix[i][j]); // Error
-            matrix[j][i] = matrix[i][j];
-        }
-    }
-}
-
-int **allPaths(int mat[MAT_SIZE][MAT_SIZE])
-{
-    int tempMat[MAT_SIZE][MAT_SIZE];
     for (int i = 0; i < MAT_SIZE; i++)
     {
         for (int j = 0; j < MAT_SIZE; j++)
         {
-            tempMat[i][j] = mat[i][j];
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+}
+
+void allPaths(int srcMat[MAT_SIZE][MAT_SIZE], int destMat[MAT_SIZE][MAT_SIZE])
+{
+    for (int i = 0; i < MAT_SIZE; i++)
+    {
+        for (int j = 0; j < MAT_SIZE; j++)
+        {
+            destMat[i][j] = srcMat[i][j];
         }
     }
 
@@ -35,48 +27,53 @@ int **allPaths(int mat[MAT_SIZE][MAT_SIZE])
     {
         for (int i = 0; i < MAT_SIZE; i++)
         {
-            for (int j = i; i < MAT_SIZE; i++)
+            for (int j = i; j < MAT_SIZE; j++)
             {
                 if (i == j)
                 {
-                    continue;
+                    destMat[i][j] = 0;
                 }
-                if (tempMat[i][j] == 0)
+                else if (destMat[i][j] == 0)
                 {
-                    tempMat[i][j] = INT_MAX;
+                    destMat[i][j] = INT_MAX;
                 }
-                tempMat[i][j] = min(tempMat[i][j], tempMat[i][k] + tempMat[k][j]); // Error
-                tempMat[j][i] = tempMat[i][j];
+                else
+                {
+                    destMat[i][j] = (destMat[i][j] < destMat[i][k] + destMat[k][j]) ? destMat[i][j] : destMat[i][k] + destMat[k][j];
+                    destMat[j][i] = destMat[i][j];
+                }
             }
         }
     }
-    return tempMat;
 }
 
 void isPath(int matrix[MAT_SIZE][MAT_SIZE])
 {
-    int tempMat ** = allPaths(matrix);
     int src, dest;
     scanf("%d", &src);
     scanf("%d", &dest);
-    if (matrix[src][dest] == INT_MAX)
+    printf("IN isPath %d", matrix[src][dest]);
+    if (matrix[src][dest] == INT_MAX || src == dest)
     {
-        return printf("%s", "false\n");
+        printf("False\n");
     }
-    printf("%s", "true\n");
+    else
+    {
+        printf("True\n");
+    }
 }
 
-int pathLeng(int matrix[MAT_SIZE][MAT_SIZE])
+void pathLeng(int matrix[MAT_SIZE][MAT_SIZE])
 {
     int src, dest;
     scanf("%d", &src);
     scanf("%d", &dest);
     if (matrix[src][dest] == INT_MAX)
     {
-        printf("%d", -1);
+        printf("%d\n", -1);
     }
     else if (matrix[src][dest] != INT_MAX)
     {
-        printf("%d", matrix[src][dest]);
+        printf("%d\n", matrix[src][dest]);
     }
 }
