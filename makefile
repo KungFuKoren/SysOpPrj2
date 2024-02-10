@@ -1,3 +1,5 @@
+all: my_graph my_Knapsack
+
 my_graph: my_graph.a
 
 my_Knapsack: my_Knapsack.a
