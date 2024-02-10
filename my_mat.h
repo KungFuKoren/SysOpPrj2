@@ -14,6 +14,6 @@ void pathLeng(int matrix[MAT_SIZE][MAT_SIZE]);
 #define KNAPSACK_MAX_WEIGHT 20
 #define KNSAPSACK_MAX_CAPACITY 5
 
-int knapSack(int weights[], int values[], char selected_bool[]);
+int knapSack(int weights[], int values[], int selected_bool[]);
 
 #endif

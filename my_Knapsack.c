@@ -6,6 +6,7 @@ int main()
     char items[KNSAPSACK_MAX_CAPACITY];
     int values[KNSAPSACK_MAX_CAPACITY];
     int weights[KNSAPSACK_MAX_CAPACITY];
+    int selected_bool[KNSAPSACK_MAX_CAPACITY];
 
     for (int i = 0; i < KNSAPSACK_MAX_CAPACITY; i++)
     {
@@ -14,7 +15,14 @@ int main()
         scanf(" %d", &weights[i]);
     }
 
-    knapSack(weights, values, items);
+    printf("Maximum profit: %d\n", knapSack(weights, values, selected_bool));
+    printf("Selected items:");
+    for (int i = 0; i < KNSAPSACK_MAX_CAPACITY; i++)
+    {
+        if (selected_bool[i])
+            printf(" %c", items[i]);
+    }
+    printf("\n");
     return 0;
 }
 
@@ -23,7 +31,7 @@ int max(int a, int b)
     return a > b ? a : b;
 }
 
-int knapSack(int weights[], int values[], char selected_bool[])
+int knapSack(int weights[], int values[], int selected_bool[])
 {
 
     int KnapsackDP[KNSAPSACK_MAX_CAPACITY + 1][KNAPSACK_MAX_WEIGHT + 1];
@@ -48,33 +56,19 @@ int knapSack(int weights[], int values[], char selected_bool[])
         }
     }
 
-    char selected_items[KNSAPSACK_MAX_CAPACITY];
-
     int w = KNAPSACK_MAX_WEIGHT;
     int res = KnapsackDP[KNSAPSACK_MAX_CAPACITY][KNAPSACK_MAX_WEIGHT];
 
     for (int i = KNSAPSACK_MAX_CAPACITY; i > 0 && res > 0; i--)
     {
-        if (res == KnapsackDP[i - 1][w])
+        if (res != KnapsackDP[i - 1][w])
         {
-            continue;
-        }
-        else
-        {
-            selected_items[i - 1] = selected_bool[i - 1];
+
+            selected_bool[i - 1] = 1;
             w -= weights[i - 1];
             res -= values[i - 1];
         }
     }
-
-    printf("Maximum profit: %d\n", KnapsackDP[KNSAPSACK_MAX_CAPACITY][KNAPSACK_MAX_WEIGHT]);
-    printf("Selected items:");
-    for (int i = 0; i < KNSAPSACK_MAX_CAPACITY; i++)
-    {
-        printf("%c ", selected_items[i]);
-    }
-
-    printf("\n");
 
     return KnapsackDP[KNSAPSACK_MAX_CAPACITY][KNAPSACK_MAX_WEIGHT];
 }
