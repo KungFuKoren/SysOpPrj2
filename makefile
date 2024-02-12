@@ -6,11 +6,11 @@ my_Knapsack: my_Knapsack.a
 
 my_graph.a: my_mat.o my_graph.o
 	ar rcs my_graph.a my_mat.o my_graph.o
-	ranlib my_graph.a
+	#ranlib my_graph.a
 
 my_Knapsack.a: my_Knapsack.o
 	ar rcs my_Knapsack.a my_Knapsack.o
-	ranlib my_Knapsack.a
+	#ranlib my_Knapsack.a
 
 my_graph.o: my_graph.c
 	gcc -Wall -c my_graph.c
